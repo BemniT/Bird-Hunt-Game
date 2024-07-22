@@ -1,0 +1,32 @@
+package com.example.flyhunt;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.TextView;
+
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+
+public class GameOver extends AppCompatActivity {
+
+    TextView tvScore;
+    TextView highScore1;
+    @Override
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.game_over);
+        int score = getIntent().getExtras().getInt("score");
+        int hScore = getIntent().getExtras().getInt("hScore");
+        tvScore = findViewById(R.id.tvScore);
+        tvScore.setText("" + score);
+        highScore1 = findViewById(R.id.highScore);
+        highScore1.setText("" + hScore);
+    }
+    public void restart(View view){
+        Intent intent = new Intent(GameOver.this , MainActivity.class);
+        startActivity(intent);
+        finish();
+    }
+
+}
